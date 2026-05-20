@@ -2,13 +2,20 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f8fafc;
-  color: #0f172a;
+  background: transparent;
+  color: #eef2ff;
 }
 
 .main {
-  width: min(1200px, 100% - 2rem);
+  width: min(1260px, 100% - 2rem);
   margin: 0 auto;
   flex: 1;
-  padding: 2rem 0;
+  padding: 2rem 0 3rem;
+}
+
+@media (max-width: 768px) {
+  .main {
+    width: min(100%, 100% - 1.5rem);
+    padding: 1.5rem 0 2rem;
+  }
 }

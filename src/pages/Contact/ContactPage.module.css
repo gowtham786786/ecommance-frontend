@@ -1,0 +1,68 @@
+.page {
+  padding: 2.5rem 0.75rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: center;
+}
+.overline {
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.14);
+  color: #7dd3fc;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+}
+
+.hero h1 {
+  margin: 0.8rem 0 1rem;
+  color: #ffffff;
+  font-size: clamp(2.5rem, 4vw, 3.2rem);
+}
+
+.hero p {
+  color: #cbd5e1;
+  max-width: 46rem;
+  line-height: 1.8;
+}
+
+.card {
+  padding: 2rem;
+  border-radius: 1.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  margin: 0 0 1rem;
+  color: #ffffff;
+}
+
+.card p {
+  color: #cbd5e1;
+  line-height: 1.85;
+}
+
+.card a {
+  color: #7dd3fc;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

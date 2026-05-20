@@ -1,6 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/Home/HomePage';
 import AboutPage from '../pages/About/AboutPage';
+import ContactPage from '../pages/Contact/ContactPage';
+import DealsPage from '../pages/Deals/DealsPage';
 import ProductsPage from '../pages/Products/ProductsPage';
 import ProductDetailPage from '../pages/ProductDetail/ProductDetailPage';
 import CartPage from '../pages/Cart/CartPage';
@@ -18,6 +20,8 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/deals" element={<DealsPage />} />
       <Route path="/products/:category" element={<ProductsPage />} />
       <Route path="/product/:id" element={<ProductDetailPage />} />
 
