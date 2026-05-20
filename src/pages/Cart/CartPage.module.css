@@ -1,0 +1,25 @@
+.page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.left {
+  display: grid;
+  gap: 1rem;
+}
+
+.clearButton,
+.checkoutButton {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 0;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.checkoutButton {
+  margin-top: 1rem;
+}

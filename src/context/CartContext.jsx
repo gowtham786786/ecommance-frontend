@@ -1,41 +1,52 @@
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useEffect, useMemo, useState } from 'react';
 
-// Create Cart Context
-const CartContext = createContext();
+export const CartContext = createContext();
+
+const CART_STORAGE_KEY = 'ecommerce_cart_items';
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [paymentHistory, setPaymentHistory] = useState([]);
+  const [items, setItems] = useState(() => {
+    const stored = localStorage.getItem(CART_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  });
 
-  // Function to add item to cart
-  const addToCart = (product) => {
-    setCartItems((prevCart) => [...prevCart, product]);
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+  }, [items]);
+
+  const addToCart = (product, quantity = 1) => {
+    setItems((prev) => {
+      const existing = prev.find((item) => item.product.id === product.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.product.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
+        );
+      }
+      return [...prev, { product, quantity }];
+    });
   };
 
-  // Function to remove item from cart
   const removeFromCart = (productId) => {
-    setCartItems((prevCart) => prevCart.filter((item) => item.id !== productId));
+    setItems((prev) => prev.filter((item) => item.product.id !== productId));
   };
 
-  // Function to complete payment
-  const completePayment = () => {
-    if (cartItems.length > 0) {
-      setPaymentHistory((prevHistory) => [
-        ...prevHistory,
-        { id: Date.now(), items: cartItems, date: new Date().toLocaleString() },
-      ]);
-      setCartItems([]); // Empty the cart
-    }
+  const updateQuantity = (productId, quantity) => {
+    setItems((prev) =>
+      prev.map((item) =>
+        item.product.id === productId ? { ...item, quantity: Math.max(1, quantity) } : item
+      )
+    );
   };
 
-  return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, paymentHistory, completePayment }}>
-      {children}
-    </CartContext.Provider>
+  const clearCart = () => setItems([]);
+
+  const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
+  const cartTotal = items.reduce((sum, item) => sum + item.quantity * item.product.price, 0);
+
+  const value = useMemo(
+    () => ({ items, addToCart, removeFromCart, updateQuantity, clearCart, cartCount, cartTotal }),
+    [items, cartCount, cartTotal]
   );
-};
 
-// Custom hook to use cart context
-export const useCart = () => {
-  return useContext(CartContext);
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

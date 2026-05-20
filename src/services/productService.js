@@ -1,19 +1,13 @@
-import axios from "axios";
+import api from './api';
 
-const API_BASE_URL = "http://localhost:8080/api/products";  // Backend API URL
-
-// Fetch products by category (computers, mobiles, laptops, pendrives, or all)
-export const getProducts = async (category = "") => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/${category}`);
-    return response.data;  // Return products array
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return []; // Return empty array on error
-  }
+export const getProducts = async (category = '') => {
+  return api.get(`/products/${category}`).then((res) => res.data);
 };
 
-// Get product image URL
-export const getProductImageUrl = (imagePath) => {
-  return `http://localhost:8080/api/products/images/${imagePath}`;
+export const getProductById = async (productId) => {
+  return api.get(`/products/${productId}`).then((res) => res.data);
+};
+
+export const getRelatedProducts = async (category) => {
+  return api.get(`/products/category/${category}`).then((res) => res.data);
 };

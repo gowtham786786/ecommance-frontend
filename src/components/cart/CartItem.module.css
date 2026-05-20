@@ -1,0 +1,49 @@
+.row {
+  display: grid;
+  grid-template-columns: 90px 1fr auto auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.details h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controls button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #cbd5e1;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.total {
+  font-weight: 700;
+}
+
+.remove {
+  border: 0;
+  background: transparent;
+  color: #ef4444;
+  text-decoration: underline;
+  cursor: pointer;
+}

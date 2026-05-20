@@ -1,0 +1,23 @@
+.page {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 110px);
+}
+
+.container {
+  text-align: center;
+  background: white;
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.button {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  text-decoration: none;
+  background: #2563eb;
+  color: white;
+  padding: 0.9rem 1.5rem;
+  border-radius: 9999px;
+}

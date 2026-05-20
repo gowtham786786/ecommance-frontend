@@ -1,0 +1,41 @@
+.page {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 110px);
+}
+
+.card {
+  width: min(500px, 100%);
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+}
+
+.error,
+.serverError {
+  color: #dc2626;
+}
+
+.submitButton {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 1rem;
+  cursor: pointer;
+}
